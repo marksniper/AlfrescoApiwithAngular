@@ -16,8 +16,8 @@ Spring permit to communicate with Alfresco, using a Alfresco Rest API
 
 Install [nvm](https://github.com/creationix/nvm) and run:
 
-'''bash
-nvm install 11.1.0
-'''
+```
+  nvm install 11.1.0
+```
 
 _It is possible that code is written in italian._
