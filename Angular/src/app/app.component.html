@@ -1,0 +1,9 @@
+ <nav class="nav justify-content-center">
+    <a class="nav-link active" routerLink="/index" routerLinkActive="active">Index</a>
+   <a class="nav-link active" routerLink="/user" routerLinkActive="active">User</a>
+   <a  class="nav-link active" placement="bottom" [ngbPopover]="popContent" [popoverTitle]="popTitle" triggers="mouseenter:mouseleave">{{fullName}}</a>
+   <a href="../ng/logout" class="nav-link active">Logout</a>
+  </nav>
+ <ng-template #popTitle>Hello, <b>{{fullName}}</b>!</ng-template>
+ <ng-template #popContent>You are logged in Alfresco, using id <b>{{idAlfresco}}</b>. Email registered is <b>{{email}}</b></ng-template>
+<router-outlet></router-outlet>

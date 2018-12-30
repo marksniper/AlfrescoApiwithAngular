@@ -1,0 +1,55 @@
+<style>
+  input.ng-dirty.ng-invalid { border: 2px solid #ff0000 }
+  input.ng-dirty.ng-valid { border: 2px solid #6bc502 }
+</style>
+<p [ngClass]="{
+    'text-success': values === '',
+    'text-danger': values !== ''
+  }">{{valuesID}} </p>
+
+<p [ngClass]="{
+    'text-success': values === '',
+    'text-danger': values !== ''
+  }">{{valuesFirstName}} </p>
+
+<p [ngClass]="{
+    'text-success': values === '',
+    'text-danger': values !== ''
+  }">{{valuesLastName}} </p>
+
+
+<p [ngClass]="{
+    'text-success': values === '',
+    'text-danger': values !== ''
+  }">{{valuesEmail}} </p>
+
+<form novalidate #form="ngForm" (ngSubmit)="saveChanges(form)">
+  <div class="bg-danger text-white p-2 mb-2"
+       *ngIf="form.invalid">
+    There are problems with the form
+    <ul>
+      <li *ngFor="let error of getFormValidationMessages(form)">
+        {{error}}
+      </li>
+    </ul>
+  </div>
+<input class="form-control" [ngModelOptions]="{standalone:true}" [(ngModel)]="newUserAlfresco.id" (keyup)="onKey($event)" required readonly/>
+<br>
+<br>
+<input class="form-control ng-invalid ng-touched ng-pristine" #name1="ngModel" name="Primo nome" [(ngModel)]="newUserAlfresco.firstName" (keyup)="onKey($event)" required />
+  <ul class="text-danger list-unstyled"
+      *ngIf="(name1.dirty) && name1.invalid">
+    <li *ngFor="let error of getValidationMessages(name1)">
+      {{error}}
+    </li>
+  </ul>
+<br>
+<input class="form-control" [ngModelOptions]="{standalone:true}" [(ngModel)]="newUserAlfresco.lastname" (keyup)="onKey($event)" required/>
+<br>
+<input type="email" class="form-control" [ngModelOptions]="{standalone:true}" [(ngModel)]="newUserAlfresco.email" (keyup)="onKey($event)" required email/>
+<br>
+<br>
+<button type="button" class="btn btn-primary" type="submit"  [disabled]="form.invalid"
+        [class.btn-secondary]="form.invalid">SAVE</button>
+<button type="button" class="btn btn-secondary" (click)="cancelChanges()">CANCEL CHANGES</button>
+</form>
